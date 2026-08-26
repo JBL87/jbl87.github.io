@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: JBL의 디지털 가든
+  pageTitle: JBL World
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
