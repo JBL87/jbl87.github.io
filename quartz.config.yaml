@@ -40,7 +40,7 @@ configuration:
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
 plugins:
-  - source: "@quartz-community/created-modified-date"
+  - source: "@quartz-community/created-modified-date" # 글의 작성일/수정일 결정 (frontmatter → git 커밋 → 파일 날짜 순으로 찾아서 표시)
     enabled: true
     options:
       defaultDateType: modified
@@ -49,7 +49,7 @@ plugins:
         - git
         - filesystem
     order: 10
-  - source: "@quartz-community/syntax-highlighting"
+  - source: "@quartz-community/syntax-highlighting" # 코드 블록 색상 강조 (구문 하이라이팅)
     enabled: true
     options:
       theme:
@@ -57,89 +57,91 @@ plugins:
         dark: github-dark
       keepBackground: false
     order: 20
-  - source: "@quartz-community/obsidian-flavored-markdown"
+  - source: "@quartz-community/obsidian-flavored-markdown" # Obsidian 문법 지원 ([[위키링크]], 콜아웃, 이미지 임베드, 체크박스 등)
     enabled: true
     options:
       enableInHtmlEmbed: false
       enableCheckbox: true
     order: 30
-  - source: "@quartz-community/github-flavored-markdown"
+  - source: "@quartz-community/github-flavored-markdown" # GitHub 마크다운 문법 지원 (표, 취소선, 각주, URL 자동링크 등)
     enabled: true
     order: 40
-  - source: "@quartz-community/table-of-contents"
+  - source: "@quartz-community/table-of-contents" # 오른쪽에 글 목차(TOC) 표시
     enabled: true
     order: 50
     layout:
       position: right
       priority: 30
-  - source: "@quartz-community/crawl-links"
+  - source: "@quartz-community/crawl-links" # [[위키링크]]를 실제 페이지 주소로 해석해서 연결
     enabled: true
     options:
       markdownLinkResolution: shortest
     order: 60
-  - source: "@quartz-community/description"
+  - source: "@quartz-community/description" # 각 글의 요약문 자동 생성 (검색 결과, 미리보기, SNS 공유에 사용)
     enabled: true
     order: 70
-  - source: "@quartz-community/latex"
+  - source: "@quartz-community/latex" # 수학 수식 렌더링 ($수식$ 형태, KaTeX 엔진)
     enabled: true
     options:
       renderEngine: katex
     order: 80
-  - source: "@quartz-community/citations"
+  - source: "@quartz-community/citations" # 논문 인용/참고문헌(BibTeX) 지원 — 현재 꺼짐
     enabled: false
     order: 85
-  - source: "@quartz-community/hard-line-breaks"
+  - source: "@quartz-community/hard-line-breaks" # Enter 한 번 친 것도 그대로 줄바꿈으로 표시 — 현재 꺼짐
     enabled: false
     order: 90
-  - source: "@quartz-community/ox-hugo"
+  - source: "@quartz-community/ox-hugo" # Emacs Org-mode(ox-hugo) 형식 호환 — 현재 꺼짐
     enabled: false
     order: 91
-  - source: "@quartz-community/roam"
+  - source: "@quartz-community/roam" # Roam Research 문법 호환 — 현재 꺼짐
     enabled: false
     order: 92
-  - source: "@quartz-community/quartz-fonts"
+  - source: "@quartz-community/quartz-fonts" # 웹폰트(구글 폰트) 불러오기
     enabled: true
-  - source: "@quartz-themes/core"
+  - source: "@quartz-themes/core" # 기성 디자인 테마 적용 (tokyo-night 등) — 현재 꺼짐
     enabled: false
     options:
       theme: tokyo-night
       mode: both
-  - source: "@quartz-community/remove-draft"
+  - source: "@quartz-community/remove-draft" # frontmatter에 draft: true 적은 글을 사이트에서 제외 (초안 숨기기)
     enabled: true
-  - source: "@quartz-community/explicit-publish"
+  - source: "@quartz-community/explicit-publish" # publish: true 표시한 글만 게시하는 화이트리스트 방식 — 현재 꺼짐
     enabled: false
-  - source: "@quartz-community/alias-redirects"
+  - source: "@quartz-community/alias-redirects" # aliases 속성에 적은 옛 주소로 들어와도 현재 글로 자동 이동(리다이렉트)
     enabled: true
-  - source: "@quartz-community/content-index"
+  - source: "@quartz-community/content-index" # 검색 인덱스 + sitemap.xml + RSS 피드 생성
     enabled: true
     options:
       enableSiteMap: true
       enableRSS: true
-  - source: "@quartz-community/favicon"
+  - source: "@quartz-community/favicon" # 브라우저 탭 아이콘(파비콘) 생성
     enabled: true
-  - source: "@quartz-community/og-image"
+  - source: "@quartz-community/og-image" # 카톡/SNS에 링크 공유할 때 보이는 미리보기 이미지 자동 생성
     enabled: true
-  - source: "@quartz-community/cname"
+  - source: "@quartz-community/cname" # 커스텀 도메인용 CNAME 파일 생성 (기본 도메인이면 있으나 없으나 무방)
     enabled: true
-  - source: "@quartz-community/canvas-page"
+  - source: "@quartz-community/canvas-page" # Obsidian 캔버스(.canvas) 파일을 웹페이지로 렌더링
     enabled: true
-  - source: "@quartz-community/content-page"
+  - source: "@quartz-community/content-page" # 마크다운을 HTML 페이지로 만드는 핵심 플러그인 (끄면 사이트가 안 나옴)
     enabled: true
-  - source: "@quartz-community/folder-page"
+  - source: "@quartz-community/folder-page" # 폴더별 글 목록 페이지 자동 생성
     enabled: true
-  - source: "@quartz-community/tag-page"
+  - source: "@quartz-community/tag-page" # 태그별 글 목록 페이지 자동 생성
     enabled: true
-  - source: "@quartz-community/explorer"
+  - source: "@quartz-community/explorer" # 왼쪽 파일 탐색기 사이드바 (제목을 'Contents'로 설정해둠)
     enabled: true
+    options:
+      title: Contents
     layout:
       position: left
       priority: 50
-  - source: "@quartz-community/graph"
+  - source: "@quartz-community/graph" # 오른쪽 그래프 뷰 (글끼리 연결 관계 시각화)
     enabled: true
     layout:
       position: right
       priority: 10
-  - source: "@quartz-community/search"
+  - source: "@quartz-community/search" # 사이트 전체 글 검색 기능
     enabled: true
     layout:
       position: left
@@ -147,50 +149,50 @@ plugins:
       group: toolbar
       groupOptions:
         grow: true
-  - source: "@quartz-community/backlinks"
+  - source: "@quartz-community/backlinks" # 오른쪽 백링크 목록 (이 글을 링크한 다른 글들)
     enabled: true
     layout:
       position: right
       priority: 50
-  - source: "@quartz-community/article-title"
+  - source: "@quartz-community/article-title" # 본문 상단에 글 제목 표시
     enabled: true
     layout:
       position: beforeBody
       priority: 10
-  - source: "@quartz-community/content-meta"
+  - source: "@quartz-community/content-meta" # 제목 아래 메타정보 표시 (날짜, 읽는 데 걸리는 시간)
     enabled: true
     layout:
       position: beforeBody
       priority: 20
-  - source: "@quartz-community/tag-list"
+  - source: "@quartz-community/tag-list" # 글에 달린 태그 목록을 제목 근처에 표시 — 현재 꺼짐
     enabled: false
     layout:
       position: beforeBody
       priority: 30
-  - source: "@quartz-community/page-title"
+  - source: "@quartz-community/page-title" # 왼쪽 상단 사이트 이름 표시 (지금 'JBL World')
     enabled: true
     layout:
       position: left
       priority: 10
-  - source: "@quartz-community/darkmode"
+  - source: "@quartz-community/darkmode" # 다크/라이트 모드 전환 버튼 (달 모양 아이콘)
     enabled: true
     layout:
       position: left
       priority: 30
       group: toolbar
-  - source: "@quartz-community/reader-mode"
+  - source: "@quartz-community/reader-mode" # 리더 모드 버튼 (사이드바 숨기고 본문만 보기, 책 모양 아이콘)
     enabled: true
     layout:
       position: left
       priority: 35
       group: toolbar
-  - source: "@quartz-community/breadcrumbs"
+  - source: "@quartz-community/breadcrumbs" # 글 상단 경로 표시 (Home > 폴더 > 글)
     enabled: true
     layout:
       position: beforeBody
       priority: 5
       condition: not-index
-  - source: "@quartz-community/comments"
+  - source: "@quartz-community/comments" # 댓글 기능 (giscus = GitHub Discussions 기반) — 현재 꺼짐
     enabled: false
     options:
       provider: giscus
@@ -198,17 +200,17 @@ plugins:
     layout:
       position: afterBody
       priority: 10
-  - source: "@quartz-community/footer"
-    enabled: true
+  - source: "@quartz-community/footer" # 페이지 하단 푸터 (링크 영역) — 현재 꺼짐
+    enabled: false
     options:
       links:
         GitHub: https://github.com/JBL87/jbl87.github.io
     layout:
       position: footer
       priority: 50
-  - source: "@quartz-community/recent-notes"
+  - source: "@quartz-community/recent-notes" # 최근 작성한 글 목록 위젯 — 현재 꺼짐
     enabled: false
-  - source: "@quartz-community/spacer"
+  - source: "@quartz-community/spacer" # 모바일 화면에서 레이아웃 정렬용 빈 공간 (기능 없음)
     enabled: true
     options: {}
     order: 25
@@ -216,11 +218,11 @@ plugins:
       position: left
       priority: 25
       display: mobile-only
-  - source: "@quartz-community/bases-page"
+  - source: "@quartz-community/bases-page" # Obsidian Bases(.base 데이터베이스 뷰) 파일을 웹페이지로 렌더링
     enabled: true
     options: {}
     order: 50
-  - source: "@quartz-community/note-properties"
+  - source: "@quartz-community/note-properties" # 글 상단에 속성(frontmatter) 표시 (지금은 description/tags/aliases만 보이게 설정됨)
     enabled: true
     options:
       includeAll: false
@@ -237,11 +239,11 @@ plugins:
       position: beforeBody
       priority: 15
       display: all
-  - source: "@quartz-community/unlisted-pages"
+  - source: "@quartz-community/unlisted-pages" # unlisted: true인 글을 목록/검색/그래프에서 숨김 (링크 아는 사람만 접근)
     enabled: true
     options: {}
     order: 45
-  - source: "@quartz-community/encrypted-pages"
+  - source: "@quartz-community/encrypted-pages" # password 속성을 적은 글을 비밀번호로 잠금 (비공개 글)
     enabled: true
     options:
       iterations: 600000
@@ -249,7 +251,7 @@ plugins:
       unlistWhenEncrypted: false
       outputPath: static/encryptedContentIndex.json
     order: 900
-  - source: "@quartz-community/stacked-pages"
+  - source: "@quartz-community/stacked-pages" # 클릭한 글들을 옆으로 쌓아서 여러 개 동시에 보는 모드 — 현재 꺼짐
     enabled: false
     layout:
       position: afterBody

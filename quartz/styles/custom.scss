@@ -1,3 +1,16 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// 왼쪽 사이드바 넓히기 (기본 320px → 1.5배 480px): 2026-08-27추가
+.page:not([data-frame="full-width"]) > #quartz-body {
+  grid-template-columns: 420px auto $sidePanelWidth;
+
+  @media all and ($tablet) {
+    grid-template-columns: 420px auto;
+  }
+
+  @media all and ($mobile) {
+    grid-template-columns: auto;
+  }
+}
