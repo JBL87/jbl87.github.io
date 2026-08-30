@@ -14,3 +14,19 @@
     grid-template-columns: auto;
   }
 }
+
+// footer(GitHub 링크)를 왼쪽 사이드바로 옮겨서 생기는 조정: 2026-08-30추가
+// "Created with Quartz ⓒ 연도" 제작 문구는 숨기고 링크만 남김
+.left.sidebar footer {
+  margin-bottom: 0;
+
+  & > p {
+    display: none;
+  }
+
+  ul {
+    margin-top: 0;
+    flex-direction: column; // 링크를 가로 나열 대신 세로로 (GitHub 아래 Profile)
+    gap: 0.25rem;
+  }
+}

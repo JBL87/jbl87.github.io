@@ -133,6 +133,8 @@ plugins:
     enabled: true
     options:
       title: Contents
+      # 목록에서 숨길 항목: tags(기본값 유지) + Profile(사이트 이름 아래 링크로 옮김)
+      filterFn: '(node) => node.slugSegment !== "tags" && node.slugSegment !== "profile"'
     layout:
       position: left
       priority: 50
@@ -200,14 +202,15 @@ plugins:
     layout:
       position: afterBody
       priority: 10
-  - source: "@quartz-community/footer" # 페이지 하단 푸터 (링크 영역) — 현재 꺼짐
-    enabled: false
+  - source: "@quartz-community/footer" # 링크 목록 (왼쪽 사이트 이름 'JBL World' 아래에 GitHub 링크 표시)
+    enabled: true
     options:
       links:
-        GitHub: https://github.com/JBL87/jbl87.github.io
+        GitHub: https://github.com/JBL87
+        Profile: /profile # 주소는 소문자여야 함 (Quartz가 slug를 소문자로 생성)
     layout:
-      position: footer
-      priority: 50
+      position: left
+      priority: 15
   - source: "@quartz-community/recent-notes" # 최근 작성한 글 목록 위젯 — 현재 꺼짐
     enabled: false
   - source: "@quartz-community/spacer" # 모바일 화면에서 레이아웃 정렬용 빈 공간 (기능 없음)

@@ -15,7 +15,7 @@ export async function glob(
     await globby(pattern, {
       cwd,
       ignore: ignorePatterns,
-      gitignore: true,
+      gitignore: false, // .gitignore 등록 파일(test폴더 등)도 로컬 빌드에 포함되도록 끔 (GitHub 업로드는 git이 계속 차단)
     })
   ).map(toPosixPath)
   return fps as FilePath[]
