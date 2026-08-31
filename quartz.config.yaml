@@ -202,7 +202,7 @@ plugins:
     layout:
       position: afterBody
       priority: 10
-  - source: "@quartz-community/footer" # 링크 목록 (왼쪽 사이트 이름 'JBL World' 아래에 GitHub 링크 표시)
+  - source: "@quartz-community/footer" # 링크 목록 (웹 전용: 왼쪽 사이트 이름 'JBL World' 아래에 GitHub·Profile 표시)
     enabled: true
     options:
       links:
@@ -211,15 +211,25 @@ plugins:
     layout:
       position: left
       priority: 15
+      display: desktop-only # 모바일에선 숨김 (모바일은 아래 별도 footer가 본문 하단에 Profile만 표시)
+  - source: "@quartz-community/footer" # (모바일 전용) 본문 하단에 Profile 링크 표시
+    enabled: true
+    options:
+      links:
+        Profile: /profile
+    layout:
+      position: footer
+      priority: 10
+      display: mobile-only
   - source: "@quartz-community/recent-notes" # 최근 작성한 글 목록 위젯 — 현재 꺼짐
     enabled: false
-  - source: "@quartz-community/spacer" # 모바일 화면에서 레이아웃 정렬용 빈 공간 (기능 없음)
+  - source: "@quartz-community/spacer" # 모바일 화면에서 레이아웃 정렬용 빈 공간 (제목 뒤에 넣어 🌙📖🔍를 오른쪽으로 밀어줌)
     enabled: true
     options: {}
     order: 25
     layout:
       position: left
-      priority: 25
+      priority: 12 # 제목(10)과 다크모드·리더모드 그룹(17) 사이
       display: mobile-only
   - source: "@quartz-community/bases-page" # Obsidian Bases(.base 데이터베이스 뷰) 파일을 웹페이지로 렌더링
     enabled: true
