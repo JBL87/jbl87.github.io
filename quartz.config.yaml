@@ -181,13 +181,17 @@ plugins:
     layout:
       position: left
       priority: 30
-      group: toolbar
+      group: profile-row
+      groupOptions:
+        align: end # 세로 가운데 대신 아래쪽(Profile 줄)에 정렬
   - source: "@quartz-community/reader-mode" # 리더 모드 버튼 (사이드바 숨기고 본문만 보기, 책 모양 아이콘)
     enabled: true
     layout:
       position: left
       priority: 35
-      group: toolbar
+      group: profile-row
+      groupOptions:
+        align: end
   - source: "@quartz-community/breadcrumbs" # 글 상단 경로 표시 (Home > 폴더 > 글)
     enabled: true
     layout:
@@ -211,6 +215,7 @@ plugins:
     layout:
       position: left
       priority: 15
+      group: profile-row
   - source: "@quartz-community/recent-notes" # 최근 작성한 글 목록 위젯 — 현재 꺼짐
     enabled: false
   - source: "@quartz-community/spacer" # 모바일 화면에서 레이아웃 정렬용 빈 공간 (기능 없음)
@@ -264,6 +269,10 @@ layout:
   groups:
     toolbar:
       priority: 35
+      direction: row
+      gap: 0.5rem
+    profile-row: # footer 링크(GitHub/Profile) 옆에 다크모드·리더모드 버튼을 가로로 배치
+      priority: 15
       direction: row
       gap: 0.5rem
   byPageType:

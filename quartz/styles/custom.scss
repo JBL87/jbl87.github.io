@@ -2,12 +2,17 @@
 
 // put your custom CSS here!
 
+// 페이지 전체 최대 폭 확장 (기본 1500px → 2200px, 사이드바는 그대로라 본문만 넓어짐): 2026-08-31추가
+.page {
+  max-width: 2200px;
+}
+
 // 왼쪽 사이드바 넓히기 (기본 320px → 1.5배 480px): 2026-08-27추가
 .page:not([data-frame="full-width"]) > #quartz-body {
-  grid-template-columns: 420px auto $sidePanelWidth;
+  grid-template-columns: 320px auto $sidePanelWidth;
 
   @media all and ($tablet) {
-    grid-template-columns: 420px auto;
+    grid-template-columns: 320px auto;
   }
 
   @media all and ($mobile) {
