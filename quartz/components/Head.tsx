@@ -94,6 +94,12 @@ export default (() => {
         <meta name="generator" content="Quartz" />
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
+        {/* 저장된 테마가 없으면 다크 모드를 기본값으로 — darkmode 플러그인 스크립트(아래 beforeDOMReady)보다 먼저 실행되어야 함: 2026-08-31추가 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(!localStorage.getItem("theme"))localStorage.setItem("theme","dark")`,
+          }}
+        ></script>
         {js
           .filter((resource) => resource.loadTime === "beforeDOMReady")
           .map((res) => JSResourceToScriptElement(res, true))}
