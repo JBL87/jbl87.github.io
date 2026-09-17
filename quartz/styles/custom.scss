@@ -38,7 +38,7 @@
 // 모바일: 상단 1줄 (☰ JBL World ── 🌙 📖 🔍 오른쪽, spacer가 밀어줌): 2026-08-31추가
 @media all and ($mobile) {
   .page .sidebar.left {
-    column-gap: 0.75rem; // 기본 gap이 0이라 ☰·제목·버튼들 사이 간격 필요
+    column-gap: 0.5rem; // 기본 gap이 0이라 ☰·제목·버튼들 사이 간격 필요 (2026-09-02: 다크모드 토글이 40px로 넓어져 0.75rem→0.5rem, 안 줄이면 제목이 두 줄로 꺾임)
 
     .page-title {
       font-size: 1.5rem; // 기본 1.75rem이면 한 줄에 안 들어가 제목이 꺾임
@@ -55,4 +55,53 @@
   & > p {
     display: none;
   }
+}
+
+// 다크모드 버튼을 Obsidian식 토글 스위치로: 2026-09-02 추가
+// 플러그인(@quartz-community/darkmode) 마크업은 그대로 두고 모양만 변경
+button.darkmode {
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  background-color: var(--lightgray);
+  transition: background-color 0.2s ease;
+
+  // 미끄러지는 흰색 원형 손잡이
+  &::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease;
+  }
+
+  // 해/달 아이콘을 트랙 안의 작은 아이콘으로 축소
+  svg {
+    width: 12px;
+    height: 12px;
+    top: calc(50% - 6px);
+  }
+  .dayIcon {
+    // 라이트 모드: 손잡이 왼쪽, 해 아이콘 오른쪽
+    right: 5px;
+  }
+  .nightIcon {
+    // 다크 모드: 달 아이콘 왼쪽, 손잡이 오른쪽
+    left: 5px;
+  }
+}
+
+// 다크 모드일 때 손잡이를 오른쪽으로 이동
+:root[saved-theme="dark"] button.darkmode::after {
+  transform: translateX(18px);
+}
+
+// 실거래 뷰어: 링크 미리보기(팝오버)에는 복사본만 들어가고 스크립트가 실행되지 않으므로 필터·조회 UI를 숨김: 2026-09-17추가
+.popover #popover-internal-rt-app {
+  display: none;
 }
