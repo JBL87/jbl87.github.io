@@ -105,3 +105,20 @@ button.darkmode {
 .popover #popover-internal-rt-app {
   display: none;
 }
+
+// 실거래 뷰어 필터: 필터명을 필터 위에 두고, 조회 버튼은 필터들과 간격을 둠: 2026-09-17추가
+#rt-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem;
+
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #rt-run {
+    margin-left: 1.5rem;
+  }
+}
